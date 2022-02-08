@@ -15,3 +15,8 @@ interaction_df = pd.DataFrame(x_interaction,
                                             'displacement:acceleration','displacement:year','displacement:origin','horsepower:weight',
                                             'horsepower:acceleration','horsepower:year','horsepower:origin','weight:acceleration',
                                             'weight:year','weight:origin','acceleration:year','acceleration:origin','year:origin'])
+
+# fit a new model to it and see which interaction terms are significant.
+interaction_model = linear_model.OLS(y, interaction_df).fit()
+
+interaction_model.pvalues[interaction_model.pvalues < 0.05]
